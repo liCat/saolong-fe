@@ -1,6 +1,6 @@
 /* 401 没有权限 */
 
-import React from "react";
+import React, { ReactElement } from "react";
 import { Button } from "antd";
 import Img from "@/assets/error.gif";
 import { History } from "history";
@@ -11,7 +11,7 @@ interface Props {
   history: History;
 }
 
-export default function NoPowerContainer(props: Props): JSX.Element {
+export default function NoPowerContainer(props: Props): ReactElement {
   const gotoHome = (): void => {
     props.history.replace("/");
   };

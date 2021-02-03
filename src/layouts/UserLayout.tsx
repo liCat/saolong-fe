@@ -3,7 +3,7 @@
 // ==================
 // 所需的第三方库
 // ==================
-import React from "react";
+import React, { ReactElement } from "react";
 import loadable from "@loadable/component";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { Layout } from "antd";
@@ -17,7 +17,6 @@ import "./UserLayout.less";
 // 组件
 // ==================
 import Loading from "../components/Loading";
-import Footer from "../components/Footer";
 
 const { Content } = Layout;
 
@@ -36,7 +35,7 @@ const [NotFound, Login] = [
 // ==================
 // 本组件
 // ==================
-export default function AppContainer(): JSX.Element {
+export default function AppContainer(): ReactElement {
   return (
     <Layout className="page-user">
       <Content className="content">
@@ -46,7 +45,6 @@ export default function AppContainer(): JSX.Element {
           <Route component={NotFound} />
         </Switch>
       </Content>
-      <Footer className="user-layout" />
     </Layout>
   );
 }

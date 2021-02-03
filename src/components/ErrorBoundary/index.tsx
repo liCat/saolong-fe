@@ -3,13 +3,13 @@
  * 用于页面异步加载出错时显示
  * 此组件只能用class的方式，因为hooks不支持getDerivedStateFromError 和 componentDidCatch
  */
-import React from "react";
+import React, { ReactElement } from "react";
 import { WarningOutlined } from "@ant-design/icons";
 import "./index.less";
 
 interface Props {
   location: Location;
-  children: JSX.Element;
+  children: ReactElement;
 }
 interface State {
   hasError: boolean;

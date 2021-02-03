@@ -6,8 +6,6 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import store from "./store";
 import Router from "./router";
 
 /** 公共样式 **/
@@ -15,12 +13,7 @@ import "normalize.css";
 import "@/assets/styles/default.less";
 import "@/assets/styles/global.less";
 
-const Root = () => (
-  <Provider store={store}>
-    <Router />
-  </Provider>
-);
-ReactDOM.render(<Root />, document.getElementById("root"));
+ReactDOM.render(<Router />, document.getElementById("root"));
 
 if (module.hot) {
   module.hot.accept();

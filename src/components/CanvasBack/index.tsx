@@ -1,5 +1,5 @@
 /** Canvas背景效果，变化的线条 **/
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, ReactElement } from "react";
 import { useMount } from "react-use";
 import "./index.less";
 
@@ -23,7 +23,7 @@ interface Dot {
   color: number; // b通道颜色值
   dcolor: boolean; // 颜色改变向量
 }
-export default function CanvasBack(props: Props): JSX.Element {
+export default function CanvasBack(props: Props): ReactElement {
   const myCanvas = useRef<HTMLCanvasElement | null>(null);
   const data = useRef<BaseData>({
     ctx: null,

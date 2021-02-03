@@ -1,6 +1,6 @@
 /* 404 NotFound */
 
-import React from "react";
+import React, { ReactElement } from "react";
 import { Button } from "antd";
 import Img from "@/assets/error.gif";
 import { History } from "history";
@@ -11,7 +11,7 @@ interface Props {
   history: History;
 }
 
-export default function NotFoundContainer(props: Props): JSX.Element {
+export default function NotFoundContainer(props: Props): ReactElement {
   const gotoHome = (): void => {
     props.history.replace("/");
   };

@@ -5,7 +5,7 @@
 // ==================
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { Layout, Menu as MenuAntd } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { cloneDeep } from "lodash";
 
 const { Sider } = Layout;
@@ -22,28 +22,29 @@ import Icon from "@/components/Icon";
 // 类型声明
 // ==================
 import { History } from "history";
-import { Menu } from "@/models/index.type";
+
+type Menu = any;
 
 interface Props {
   data: Menu[]; // 所有的菜单数据
   collapsed: boolean; // 菜单咱开还是收起
-  history: History;
-  location: Location;
 }
 
 // ==================
 // 本组件
 // ==================
 export default function MenuCom(props: Props): JSX.Element {
+  const location = useLocation();
+  const history = useHistory();
   const [chosedKey, setChosedKey] = useState<string[]>([]); // 当前选中
   const [openKeys, setOpenKeys] = useState<string[]>([]); // 当前需要被展开的项
 
   // 当页面路由跳转时，即location发生改变，则更新选中项
   useEffect(() => {
-    const paths = props.location.pathname.split("/").filter((item) => !!item);
-    setChosedKey([props.location.pathname]);
+    const paths = location.pathname.split("/").filter((item) => !!item);
+    setChosedKey([location.pathname]);
     setOpenKeys(paths.map((item) => `/${item}`));
-  }, [props.location]);
+  }, [location]);
 
   // ==================
   // 私有方法
@@ -52,9 +53,9 @@ export default function MenuCom(props: Props): JSX.Element {
   // 菜单被选择
   const onSelect = useCallback(
     (e) => {
-      props.history.push(e.key);
+      history.push(e.key);
     },
-    [props.history]
+    [history]
   );
 
   // 工具 - 递归将扁平数据转换为层级数据

@@ -1,5 +1,5 @@
 /* 用于菜单的自定义图标 */
-import React from "react";
+import React, { ReactElement } from "react";
 import { createFromIconfontCN } from "@ant-design/icons";
 
 const IconFont = createFromIconfontCN({
@@ -10,6 +10,6 @@ interface Props {
   type: string;
 }
 
-export default function Icon(props: Props): JSX.Element {
+export default function Icon(props: Props): ReactElement {
   return <IconFont type={props.type} />;
 }
